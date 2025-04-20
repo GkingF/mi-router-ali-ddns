@@ -55,11 +55,11 @@ queryRecordId() {
 }
 
 updateRecord() {
-  sendRequest "UpdateDomainRecord" "RR=$subdomainName&RecordId=$1&SignatureMethod=HMAC-SHA1&SignatureNonce=$signatureNonce&SignatureVersion=1.0&ttl=$ttl&Timestamp=$timestamp&Type=A&Value=$(enc "$pppoeWanIpv4Address")"
+  sendRequest "UpdateDomainRecord" "RR=$subdomainName&RecordId=$1&SignatureMethod=HMAC-SHA1&SignatureNonce=$timestamp&SignatureVersion=1.0&TTL=$ttl&Timestamp=$timestamp&Type=A&Value=$pppoeWanIpv4Address"
 }
 
 addRecord() {
-  sendRequest "AddDomainRecord&domainName=$domainName" "RR=$subdomainName&SignatureMethod=HMAC-SHA1&SignatureNonce=$signatureNonce&SignatureVersion=1.0&ttl=$ttl&Timestamp=$timestamp&Type=A&Value=$(enc "$pppoeWanIpv4Address")"
+  sendRequest "AddDomainRecord&domainName=$domainName" "RR=$subdomainName&SignatureMethod=HMAC-SHA1&SignatureNonce=$signatureNonce&SignatureVersion=1.0&ttl=$ttl&Timestamp=$timestamp&Type=A&Value=$pppoeWanIpv4Address"
 }
 
 if [ "$domainRecordId" = "" ]
